@@ -210,20 +210,20 @@ class Student_Details:
         update_btn=Button(btn_frame,command=self.update_data,width=18,text="Update",font=('times new roman',12,"bold"),bg="green",fg='white')
         update_btn.grid(row=0,column=1)
 
-        delete_btn=Button(btn_frame,width=18,text="Delete",font=('times new roman',12,"bold"),bg="green",fg='white')
+        delete_btn=Button(btn_frame,command=self.delete_data,width=18,text="Delete",font=('times new roman',12,"bold"),bg="green",fg='white')
         delete_btn.grid(row=0,column=2)
 
-        reset_btn=Button(btn_frame,width=18,text="Reset",font=('times new roman',12,"bold"),bg="green",fg='white')
+        reset_btn=Button(btn_frame,command=self.reset_data,width=18,text="Reset",font=('times new roman',12,"bold"),bg="green",fg='white')
         reset_btn.grid(row=0,column=3)
 
         #buttons Frame
         btn_frame1=Frame(class_student_frame,relief=RIDGE,bg='white')
         btn_frame1.place(x=3,y=235,width=708,height=37)
 
-        take_photo_btn=Button(btn_frame1,width=38,text="Take Photo",font=('times new roman',12,"bold"),bg="green",fg='white')
+        take_photo_btn=Button(btn_frame1,width=38,text="Take Photo sample",font=('times new roman',12,"bold"),bg="green",fg='white')
         take_photo_btn.grid(row=0,column=0)
 
-        reset_btn=Button(btn_frame1,width=38,text="Reset",font=('times new roman',12,"bold"),bg="green",fg='white')
+        reset_btn=Button(btn_frame1,width=38,text="Update Photo sample",font=('times new roman',12,"bold"),bg="green",fg='white')
         reset_btn.grid(row=0,column=1)
      
         
@@ -343,6 +343,7 @@ class Student_Details:
                                                                                                             ))
                 conn.commit()
                 self.fetch_data()
+                self.reset_data()
                 conn.close()
                 messagebox.showinfo("Success","Student details has been added Successfully", parent=self.root)
             except Exception as es:
@@ -394,13 +395,14 @@ class Student_Details:
                 if Update>0:
                     conn=mysql.connector.connect(host="localhost",username='root',password='07632',database='face_recognition')
                     my_cursor=conn.cursor()
-                    my_cursor.execute("update student set Dep=%s,course=%s,year=%S,semester=%s,divison=%s,roll=%s,gender=%s,dob=%s,email=%s,phone=%s,address=%s,teacher=%s,photosample=%s whare id=%s",(   
+                    my_cursor.execute("update student set Department=%s,course=%s,year=%s,semester=%s,division=%s,name=%s,roll=%s,gender=%s,dob=%s,email=%s,phone=%s,address=%s,teacher=%s,photosample=%s where id=%s",(   
                                                                                                                 self.var_dep.get(),
                                                                                                                 self.var_course.get(),
                                                                                                                 self.var_year.get(),
                                                                                                                 self.var_sem.get(),
-                                                                                                                self.var_name.get(),
                                                                                                                 self.var_div.get(),
+                                                                                                                self.var_name.get(),
+                                                                                                                
                                                                                                                 self.var_roll.get(),
                                                                                                                 self.var_gender.get(),
                                                                                                                 self.var_dob.get(),
@@ -409,7 +411,7 @@ class Student_Details:
                                                                                                                 self.var_address.get(),
                                                                                                                 self.var_teacher.get(),
                                                                                                                 self.var_radio1.get(),
-                                                                                                                self.var_id.get(),
+                                                                                                                self.var_id.get()
                                                                                                                 ))
                 else:
                     if not Update:
@@ -417,13 +419,94 @@ class Student_Details:
                 messagebox.showinfo("Success","Student details successfully update complete", parent=self.root)
                 conn.commit()
                 self.fetch_data()
+                self.reset_data()
                 conn.close()
-            except EXCEPTION as es:
+            except Exception as es:
                 messagebox.showerror("Error",f"Due to: {str(es)}", parent=self.root)
+    
+    
+    # delete functrion
+    def delete_data(self):
+        if self.var_id.get()=="":
+            messagebox.showerror("Error","Student id must be required",parent=self.root)
+        else:
+            try:
+                delete=messagebox.askyesno("Student Delete data","Do you want to delete data",parent=self.root)
+                if delete>0:
+                    conn=mysql.connector.connect(host="localhost",username='root',password='07632',database='face_recognition')
+                    my_cursor=conn.cursor()
+                    sql="delete from student where id=%s"
+                    val=(self.var_id.get(),)
+                    my_cursor.execute(sql,val)
+                else:
+                    if not delete:
+                        return
+                conn.commit()
+                self.fetch_data()
+                self.reset_data()
+                conn.close()
+                messagebox.showinfo("Delete","Successfully delete student detials",parent=self.root)
+            except Exception as es:
+                messagebox.showerror("Error", f"Due to: {str(es)}", parent=self.root)    
+
+    #========== Reset data =================
+    def reset_data(self):
+        self.var_dep.set("Select Department"),
+        self.var_course.set("Select Course"),
+        self.var_year.set("Select Year"),
+        self.var_sem.set("Select Semester"),
+        self.var_id.set("")
+        self.var_name.set(""),
+        self.var_div.set("Select Division"),
+        self.var_roll.set(""),
+        self.var_gender.set("Male"),
+        self.var_dob.set(""),
+        self.var_email.set(""),
+        self.var_phone.set(""),
+        self.var_address.set(""),
+        self.var_teacher.set(""),
+        self.var_radio1.set("")
+
+    #========== Generate Data set =================
+    def generate_data(self):
+        if self.var_dep.get()=="Select Department" or self.var_name.get()=="" or self.var_id.get()=="":
+            messagebox.showerror("Error","All fields are required",parent=self.root)
+        else:
+            try:
+                conn=mysql.connector.connect(host="localhost",username='root',password='07632',database='face_recognition')
+                my_cursor=conn.cursor()
+                my_cursor.execute("select * from student")
+                myresult=my_cursor.fetchall()
+                id=0
+                for x in myresult:
+                    id+=1
+                my_cursor.execute("update student set Department=%s,course=%s,year=%s,semester=%s,division=%s,name=%s,roll=%s,gender=%s,dob=%s,email=%s,phone=%s,address=%s,teacher=%s,photosample=%s where id=%s",(   
+                                                                                                                self.var_dep.get(),
+                                                                                                                self.var_course.get(),
+                                                                                                                self.var_year.get(),
+                                                                                                                self.var_sem.get(),
+                                                                                                                self.var_div.get(),
+                                                                                                                self.var_name.get(),
+                                                                                                                
+                                                                                                                self.var_roll.get(),
+                                                                                                                self.var_gender.get(),
+                                                                                                                self.var_dob.get(),
+                                                                                                                self.var_email.get(),
+                                                                                                                self.var_phone.get(),
+                                                                                                                self.var_address.get(),
+                                                                                                                self.var_teacher.get(),
+                                                                                                                self.var_radio1.get(),
+                                                                                                                self.var_id.get()
+                                                                                                                ))
+                conn.commit()
+                self.fetch_data()
+                self.reset_data()
+                conn.close()
+            except Exception as es:
+                pass
 
 
-
-if __name__ == "__main__":
+if __name__=="__main__":
     root=Tk()
     obj=Student_Details(root)
     root.mainloop()

@@ -3,7 +3,9 @@ d=0
 for column_name in column_list:
     
 
-    print(f'self.var_{column_name}.set(data[{d}]),')
-    d=d+1
+    print(f'self.var_{column_name}.set(""),')
+
+    
+
 
     
