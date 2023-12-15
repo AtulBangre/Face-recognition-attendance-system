@@ -5,8 +5,9 @@ from PIL import Image,ImageTk
 class Face_Recognition_System:
     def __init__(self, root):
         self.root=root
-        self.root.geometry("1530x790+0+0")
+        self.root.geometry("1530x800+0+0")
         self.root.title("Face Recognition System")
+
         # 1st Image
         img=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
         img=img.resize((510,130))
