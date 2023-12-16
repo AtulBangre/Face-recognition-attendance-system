@@ -535,6 +535,9 @@ class Student_Details:
                 messagebox.showerror("Error", f"Due to: {str(es)}", parent=self.root)
                 print(es)
 
+    
+
+
 
 if __name__=="__main__":
     root=Tk()

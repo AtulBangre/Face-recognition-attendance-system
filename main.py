@@ -2,6 +2,8 @@ from tkinter import*
 from tkinter import ttk
 from PIL import Image,ImageTk
 from student import Student_Details 
+from train import Train 
+from face_recognizer import Face_Recognition
 import os
 
 class Face_Recognition_System:
@@ -56,9 +58,9 @@ class Face_Recognition_System:
         img5=Image.open(r"G:\face recognition attendance system\images\bt2.jpg")
         img5=img5.resize((220,220))
         self.photoimg5=ImageTk.PhotoImage(img5)
-        b2=Button(bg_img,image=self.photoimg5, cursor="hand2")
+        b2=Button(bg_img,command=self.face_recognizer,image=self.photoimg5, cursor="hand2")
         b2.place(x=500,y=100,width=220,height=220)
-        b2_1=Button(bg_img,text="Face Detector", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b2_1=Button(bg_img,command=self.face_recognizer,text="Face Detector", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b2_1.place(x=500,y=300,width=220,height=40)
 
         # Attendance Button
@@ -83,9 +85,9 @@ class Face_Recognition_System:
         img8=Image.open(r"G:\face recognition attendance system\images\bt5.png")
         img8=img8.resize((220,220))
         self.photoimg8=ImageTk.PhotoImage(img8)
-        b5=Button(bg_img,image=self.photoimg8, cursor="hand2")
+        b5=Button(bg_img,command=self.train_data,image=self.photoimg8, cursor="hand2")
         b5.place(x=200,y=390,width=220,height=220)
-        b5_1=Button(bg_img,text="Train Data", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b5_1=Button(bg_img,command=self.train_data,text="Train Data", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b5_1.place(x=200,y=590,width=220,height=40)
 
         # Developer Button
@@ -119,6 +121,14 @@ class Face_Recognition_System:
     def student_details(self):
         self.new_window=Toplevel(self.root)
         self.app=Student_Details(self.new_window)
+
+    def train_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Train(self.new_window)
+
+    def face_recognizer(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Face_Recognition(self.new_window)
 
     def open_img(self):
         os.startfile("data")
