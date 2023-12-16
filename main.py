@@ -1,7 +1,8 @@
 from tkinter import*
 from tkinter import ttk
 from PIL import Image,ImageTk
-from student import Student_Details
+from student import Student_Details 
+import os
 
 class Face_Recognition_System:
     def __init__(self, root):
@@ -91,9 +92,9 @@ class Face_Recognition_System:
         img9=Image.open(r"G:\face recognition attendance system\images\bt6.jpg")
         img9=img9.resize((220,220))
         self.photoimg9=ImageTk.PhotoImage(img9)
-        b6=Button(bg_img,image=self.photoimg9, cursor="hand2")
+        b6=Button(bg_img,command=self.open_img,image=self.photoimg9, cursor="hand2")
         b6.place(x=500,y=390,width=220,height=220)
-        b6_1=Button(bg_img,text="Photos", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b6_1=Button(bg_img,command=self.open_img,text="Photos", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b6_1.place(x=500,y=590,width=220,height=40)
 
         # Developer Button
@@ -118,6 +119,9 @@ class Face_Recognition_System:
     def student_details(self):
         self.new_window=Toplevel(self.root)
         self.app=Student_Details(self.new_window)
+
+    def open_img(self):
+        os.startfile("data")
         
 
 
