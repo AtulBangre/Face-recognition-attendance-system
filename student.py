@@ -30,36 +30,36 @@ class Student_Details:
     
 
          # 1st Image
-        img=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
-        img=img.resize((510,130))
+        img=Image.open(r"G:\face recognition attendance system\images\tit.jpg")
+        img=img.resize((1530,130))
         self.photoimg=ImageTk.PhotoImage(img)
         f_lbl=Label(self.root,image=self.photoimg)
-        f_lbl.place(x=0,y=0,width=510,height=130)
+        f_lbl.place(x=0,y=0,width=1530,height=130)
 
-        # 2nd Image
-        img2=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
-        img2=img.resize((510,130))
-        self.photoimg2=ImageTk.PhotoImage(img2)
-        f_lbl=Label(self.root,image=self.photoimg2)
-        f_lbl.place(x=510,y=0,width=510,height=130)
+        # # 2nd Image
+        # img2=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
+        # img2=img.resize((510,130))
+        # self.photoimg2=ImageTk.PhotoImage(img2)
+        # f_lbl=Label(self.root,image=self.photoimg2)
+        # f_lbl.place(x=510,y=0,width=510,height=130)
 
-        # 3rd Image
-        img3=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
-        img3=img3.resize((510,130))
-        self.photoimg3=ImageTk.PhotoImage(img3)
-        f_lbl=Label(self.root,image=self.photoimg3)
-        f_lbl.place(x=1020,y=0,width=510,height=130)
+        # # 3rd Image
+        # img3=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
+        # img3=img3.resize((510,130))
+        # self.photoimg3=ImageTk.PhotoImage(img3)
+        # f_lbl=Label(self.root,image=self.photoimg3)
+        # f_lbl.place(x=1020,y=0,width=510,height=130)
 
         # bg Image
         bgimg=Image.open(r"G:\face recognition attendance system\images\bg.jpg")
         bgimg=bgimg.resize((1530,710))
         self.photoimgbg=ImageTk.PhotoImage(bgimg)
         bg_img=Label(self.root,image=self.photoimgbg)
-        bg_img.place(x=0,y=130,width=1530,height=710)
+        bg_img.place(x=0,y=113,width=1530,height=710)
 
         # Main label
         title_lbl=Label(bg_img,text="STUDENT MANAGEMENT SYSTEM", font=("times new roman",35,"bold"),bg="white",fg="red")
-        title_lbl.place(x=0,y=0,width=1530,height=45)
+        title_lbl.place(x=0,y=3,width=1530,height=45)
 
         main_frame=Frame(bg_img,bd=2,bg='white')
         main_frame.place(x=15,y=55,width=1500,height=600)
@@ -69,8 +69,8 @@ class Student_Details:
         left_frame.place(x=10,y=10,width=730,height=580)
 
         # left Image
-        img_left=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
-        img_left=img.resize((721,130))
+        img_left=Image.open(r"G:\face recognition attendance system\images\student.jpg")
+        img_left=img_left.resize((721,130))
         self.photoimg_left=ImageTk.PhotoImage(img_left)
         f_lbl=Label(left_frame,image=self.photoimg_left)
         f_lbl.place(x=3,y=0,width=721,height=130)
@@ -235,8 +235,8 @@ class Student_Details:
         right_frame.place(x=755,y=10,width=730,height=580)
 
         # right Image
-        img_right=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
-        img_right=img.resize((721,130))
+        img_right=Image.open(r"G:\face recognition attendance system\images\stutable.jpg")
+        img_right=img_right.resize((721,130))
         self.photoimg_right=ImageTk.PhotoImage(img_right)
         f_lbl=Label(right_frame,image=self.photoimg_right)
         f_lbl.place(x=3,y=0,width=721,height=130)

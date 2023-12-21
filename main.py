@@ -1,4 +1,5 @@
 from tkinter import*
+import tkinter
 from tkinter import ttk
 from PIL import Image,ImageTk
 from student import Student_Details 
@@ -15,25 +16,25 @@ class Face_Recognition_System:
         self.root.title("Face Recognition System")
 
         # 1st Image
-        img=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
-        img=img.resize((510,130))
+        img=Image.open(r"G:\face recognition attendance system\images\tit.jpg")
+        img=img.resize((1530,130))
         self.photoimg=ImageTk.PhotoImage(img)
         f_lbl=Label(self.root,image=self.photoimg)
-        f_lbl.place(x=0,y=0,width=510,height=130)
+        f_lbl.place(x=0,y=0,width=1530,height=130)
 
-        # 2nd Image
-        img2=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
-        img2=img.resize((510,130))
-        self.photoimg2=ImageTk.PhotoImage(img2)
-        f_lbl=Label(self.root,image=self.photoimg2)
-        f_lbl.place(x=510,y=0,width=510,height=130)
+        # # 2nd Image
+        # img2=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
+        # img2=img.resize((510,130))
+        # self.photoimg2=ImageTk.PhotoImage(img2)
+        # f_lbl=Label(self.root,image=self.photoimg2)
+        # f_lbl.place(x=510,y=0,width=510,height=130)
 
-        # 3rd Image
-        img3=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
-        img3=img3.resize((510,130))
-        self.photoimg3=ImageTk.PhotoImage(img3)
-        f_lbl=Label(self.root,image=self.photoimg3)
-        f_lbl.place(x=1020,y=0,width=510,height=130)
+        # # 3rd Image
+        # img3=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
+        # img3=img3.resize((510,130))
+        # self.photoimg3=ImageTk.PhotoImage(img3)
+        # f_lbl=Label(self.root,image=self.photoimg3)
+        # f_lbl.place(x=1020,y=0,width=510,height=130)
 
         # bg Image
         bgimg=Image.open(r"G:\face recognition attendance system\images\bg.jpg")
@@ -113,9 +114,9 @@ class Face_Recognition_System:
         img11=Image.open(r"G:\face recognition attendance system\images\bt8.jpg")
         img11=img11.resize((220,220))
         self.photoimg11=ImageTk.PhotoImage(img11)
-        b8=Button(bg_img,image=self.photoimg11, cursor="hand2")
+        b8=Button(bg_img,command=self.iexite,image=self.photoimg11, cursor="hand2")
         b8.place(x=1100,y=390,width=220,height=220)
-        b8_1=Button(bg_img,text="Exit", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b8_1=Button(bg_img,command=self.iexite,text="Exit", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b8_1.place(x=1100,y=590,width=220,height=40)
 
     # ===================== Buttons Functions =====================
@@ -134,6 +135,14 @@ class Face_Recognition_System:
     def attend(self):
         self.new_window=Toplevel(self.root)
         self.app=Attendence(self.new_window)
+
+    def iexite(self):
+        self.iExite=tkinter.messagebox.askyesno("Face Recognition","Are you sure exit this project",parent=self.root)
+        if self.iExite >0:
+            self.root.destroy()
+        else:
+            return
+
 
     def open_img(self):
         os.startfile("data")

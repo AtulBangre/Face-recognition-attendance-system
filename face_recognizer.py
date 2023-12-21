@@ -16,11 +16,20 @@ class Face_Recognition:
         self.root.resizable(False,False)
         self.root.title("Face Recognition System")
 
-        title_lbl=Label(self.root,text="FACE RECOGNITION", font=("times new roman",35,"bold"),bg="white",fg="red")
+        title_lbl=Label(self.root,text="FACE RECOGNITION", font=("times new roman",35,"bold"),bg="#023ebf",fg="white")
         title_lbl.place(x=0,y=0,width=1530,height=45)
-        
-        b3_1=Button(self.root,command=self.face_reco,text="Start Train", cursor="hand2",font=("times new roman",30,"bold"),bg="darkblue",fg="white")
-        b3_1.place(x=0,y=380,width=1530,height=60) 
+
+        bgimg=Image.open(r"G:\face recognition attendance system\images\recognizBG.jpg")
+        bgimg=bgimg.resize((1530,800))
+        self.photoimgbg=ImageTk.PhotoImage(bgimg)
+        bg_img=Label(self.root,image=self.photoimgbg)
+        bg_img.place(x=0,y=45,width=1530,height=800)
+
+      
+        b3_1=Button(bg_img,command=self.face_reco,text="Start", cursor="hand2",font=("times new roman",30,"bold"),bg="#023ebf",fg="white")
+        b3_1.place(x=165,y=430,width=400,height=60) 
+
+
 
     # ==========attendance==============
     def mark_attendence(self,i,r,n,d):
