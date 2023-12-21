@@ -4,6 +4,7 @@ from PIL import Image,ImageTk
 from student import Student_Details 
 from train import Train 
 from face_recognizer import Face_Recognition
+from attendence import Attendence
 import os
 
 class Face_Recognition_System:
@@ -67,9 +68,9 @@ class Face_Recognition_System:
         img6=Image.open(r"G:\face recognition attendance system\images\bt3.jpg")
         img6=img6.resize((220,220))
         self.photoimg6=ImageTk.PhotoImage(img6)
-        b3=Button(bg_img,image=self.photoimg6, cursor="hand2")
+        b3=Button(bg_img,command=self.attend,image=self.photoimg6, cursor="hand2")
         b3.place(x=800,y=100,width=220,height=220)
-        b3_1=Button(bg_img,text="Attendance", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b3_1=Button(bg_img,command=self.attend,text="Attendance", cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b3_1.place(x=800,y=300,width=220,height=40)
 
         # Help Desk Button
@@ -129,6 +130,10 @@ class Face_Recognition_System:
     def face_recognizer(self):
         self.new_window=Toplevel(self.root)
         self.app=Face_Recognition(self.new_window)
+    
+    def attend(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Attendence(self.new_window)
 
     def open_img(self):
         os.startfile("data")
