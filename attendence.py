@@ -28,21 +28,21 @@ class Attendence:
         
 
          # 1st Image
-        img=Image.open(r"G:\face recognition attendance system\images\tit1.jpg")
+        img=Image.open(r"images\tit1.jpg")
         img=img.resize((800,200))
         self.photoimg=ImageTk.PhotoImage(img)
         f_lbl=Label(self.root,image=self.photoimg)
         f_lbl.place(x=0,y=0,width=800,height=200)
 
         # 2nd Image
-        img2=Image.open(r"G:\face recognition attendance system\images\tit1R.jpg")
+        img2=Image.open(r"images\tit1R.jpg")
         img2=img2.resize((800,200))
         self.photoimg2=ImageTk.PhotoImage(img2)
         f_lbl=Label(self.root,image=self.photoimg2)
         f_lbl.place(x=800,y=0,width=800,height=200)
 
         # bg Image
-        bgimg=Image.open(r"G:\face recognition attendance system\images\bg.jpg")
+        bgimg=Image.open(r"images\bg.jpg")
         bgimg=bgimg.resize((1530,710))
         self.photoimgbg=ImageTk.PhotoImage(bgimg)
         bg_img=Label(self.root,image=self.photoimgbg)
@@ -61,7 +61,7 @@ class Attendence:
         left_frame.place(x=10,y=10,width=730,height=505)
 
         # left Image
-        left_img=Image.open(r"G:\face recognition attendance system\images\student.jpg")
+        left_img=Image.open(r"images\student.jpg")
         left_img=left_img.resize((721,130))
         self.photoimg_left=ImageTk.PhotoImage(left_img)
         f_lbl=Label(left_frame,image=self.photoimg_left)

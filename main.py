@@ -14,9 +14,10 @@ class Face_Recognition_System:
         self.root.geometry("1530x800+0+0")
         self.root.resizable(False,False)
         self.root.title("Face Recognition System")
+        
 
         # 1st Image
-        img=Image.open(r"G:\face recognition attendance system\images\tit.jpg")
+        img=Image.open(r"images\tit.jpg")
         img=img.resize((1530,130))
         self.photoimg=ImageTk.PhotoImage(img)
         f_lbl=Label(self.root,image=self.photoimg)
@@ -37,7 +38,7 @@ class Face_Recognition_System:
         # f_lbl.place(x=1020,y=0,width=510,height=130)
 
         # bg Image
-        bgimg=Image.open(r"G:\face recognition attendance system\images\bg.jpg")
+        bgimg=Image.open(r"images\bg.jpg")
         bgimg=bgimg.resize((1530,710))
         self.photoimgbg=ImageTk.PhotoImage(bgimg)
         bg_img=Label(self.root,image=self.photoimgbg)
@@ -48,7 +49,7 @@ class Face_Recognition_System:
         title_lbl.place(x=0,y=0,width=1530,height=45)
 
         # Student Button
-        img4=Image.open(r"G:\face recognition attendance system\images\bt1.jpg")
+        img4=Image.open(r"images\bt1.jpg")
         img4=img4.resize((220,220))
         self.photoimg4=ImageTk.PhotoImage(img4)
         b1=Button(bg_img,command=self.student_details,image=self.photoimg4, cursor="hand2")
@@ -57,7 +58,7 @@ class Face_Recognition_System:
         b1_1.place(x=200,y=300,width=220,height=40)
 
         # Detect Face Button
-        img5=Image.open(r"G:\face recognition attendance system\images\bt2.jpg")
+        img5=Image.open(r"images\bt2.jpg")
         img5=img5.resize((220,220))
         self.photoimg5=ImageTk.PhotoImage(img5)
         b2=Button(bg_img,command=self.face_recognizer,image=self.photoimg5, cursor="hand2")
@@ -66,7 +67,7 @@ class Face_Recognition_System:
         b2_1.place(x=500,y=300,width=220,height=40)
 
         # Attendance Button
-        img6=Image.open(r"G:\face recognition attendance system\images\bt3.jpg")
+        img6=Image.open(r"images\bt3.jpg")
         img6=img6.resize((220,220))
         self.photoimg6=ImageTk.PhotoImage(img6)
         b3=Button(bg_img,command=self.attend,image=self.photoimg6, cursor="hand2")
@@ -75,7 +76,7 @@ class Face_Recognition_System:
         b3_1.place(x=800,y=300,width=220,height=40)
 
         # Help Desk Button
-        img7=Image.open(r"G:\face recognition attendance system\images\bt4.png")
+        img7=Image.open(r"images\bt4.png")
         img7=img7.resize((220,220))
         self.photoimg7=ImageTk.PhotoImage(img7)
         b4=Button(bg_img,image=self.photoimg7, cursor="hand2")
@@ -84,7 +85,7 @@ class Face_Recognition_System:
         b4_1.place(x=1100,y=300,width=220,height=40)
 
         # Train data Button
-        img8=Image.open(r"G:\face recognition attendance system\images\bt5.png")
+        img8=Image.open(r"images\bt5.png")
         img8=img8.resize((220,220))
         self.photoimg8=ImageTk.PhotoImage(img8)
         b5=Button(bg_img,command=self.train_data,image=self.photoimg8, cursor="hand2")
@@ -93,7 +94,7 @@ class Face_Recognition_System:
         b5_1.place(x=200,y=590,width=220,height=40)
 
         # Developer Button
-        img9=Image.open(r"G:\face recognition attendance system\images\bt6.jpg")
+        img9=Image.open(r"images\bt6.jpg")
         img9=img9.resize((220,220))
         self.photoimg9=ImageTk.PhotoImage(img9)
         b6=Button(bg_img,command=self.open_img,image=self.photoimg9, cursor="hand2")
@@ -102,7 +103,7 @@ class Face_Recognition_System:
         b6_1.place(x=500,y=590,width=220,height=40)
 
         # Developer Button
-        img10=Image.open(r"G:\face recognition attendance system\images\bt7.jpg")
+        img10=Image.open(r"images\bt7.jpg")
         img10=img10.resize((220,220))
         self.photoimg10=ImageTk.PhotoImage(img10)
         b7=Button(bg_img,image=self.photoimg10, cursor="hand2")
@@ -111,7 +112,7 @@ class Face_Recognition_System:
         b7_1.place(x=800,y=590,width=220,height=40)
 
         # Exit Button
-        img11=Image.open(r"G:\face recognition attendance system\images\bt8.jpg")
+        img11=Image.open(r"images\bt8.jpg")
         img11=img11.resize((220,220))
         self.photoimg11=ImageTk.PhotoImage(img11)
         b8=Button(bg_img,command=self.iexite,image=self.photoimg11, cursor="hand2")
