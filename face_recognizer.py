@@ -108,7 +108,7 @@ class Face_Recognition:
             cv2.imshow("Welcome to face Recognizer",img)
 
 
-            if cv2.waitKey(1)==13:
+            if cv2.waitKey(0)==1:
                 
                 video_cap.release()
                 cv2.destroyAllWindows()
