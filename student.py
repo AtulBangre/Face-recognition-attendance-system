@@ -324,7 +324,7 @@ class Student_Details:
             try:
                 conn=mysql.connector.connect(host="localhost",username='root',password='07632',database='face_recognition')
                 my_cursor=conn.cursor()
-                my_cursor.execute("insert into student values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
+                my_cursor.execute("insert into student values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%)",(
                                                                                                                 self.var_dep.get(),
                                                                                                                 self.var_course.get(),
                                                                                                                 self.var_year.get(),
@@ -412,7 +412,7 @@ class Student_Details:
                                                                                                                 self.var_address.get(),
                                                                                                                 self.var_teacher.get(),
                                                                                                                 self.var_radio1.get(),
-                                                                                                                self.var_id.get()
+                                                                                                                self.var_idget()
                                                                                                                 ))
                 else:
                     if not Update:
@@ -525,7 +525,7 @@ class Student_Details:
                         cv2.imwrite(file_name_path,face)
                         cv2.putText(face,str(img_id),(50,50),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
                         cv2.imshow("Cropped Face",face)
-                    if cv2.waitKey(1)==13 or int(img_id)==100:
+                    if int(img_id)==100:
                         break
                 cap.release()
                 cv2.destroyAllWindows()
